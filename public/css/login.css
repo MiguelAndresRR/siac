@@ -3,16 +3,33 @@
     margin: 0;
     box-sizing: border-box;
 }
+.headerlogin  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    font-family: "Bebas Neue", sans-serif;
+    padding: 20px;
+    gap: 15px;
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    border: #1274e4;
+    border: 30%;
+    border-bottom: #ffffff;
+    }
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(45deg, #93eaf0, #1274e4, #03ec51, #95f071);
+    background: linear-gradient(45deg, #000000, #1e252c, #fff205, #ffffff);
     background-size: 300% 300%;
-    animation: color 15s ease-in-out infinite;
+    animation: color 13s ease-in-out infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+
 }
 @keyframes color {
     0%{
@@ -31,31 +48,38 @@ body{
         background-position: 0% 50%;
     }
 }
+.container{
+    margin: 0%;
+}
 
 .container_login{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 400px;
-    height: 400px;
-    padding: 30px;
+    width: 40%;
+    padding: 20px;
     gap: 15px;
-    background: rgba(0, 0, 0, 0.222);
+    background: rgba(0, 0, 0, 0.222) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.47);
+    box-shadow: 0 8px 32px 0 rgb(0, 0, 0);
+    margin-bottom: 5%;
+    margin-top: 5%;
+
 }
 .container_login label {
-    font-size: 20px;
+    font-size: 16px;
     color: #ffffff;
     padding: 10px 0;
+    margin: auto;
 }
-.container_login button{
+.container_login button {
+    height: 50px;
     width: 100%;
     padding: 5px;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid transparent;
+    border-radius: 10px;
     background-color: #000000;
     color: #ffffff;
     font-size: 20px;
@@ -63,9 +87,49 @@ body{
     transition: all 0.3s ease-in-out;
     margin-top: 30px;
 }
-.container_login button:hover{
+
+.container_login button:hover {
     background-color: #ffffff;
     color: #000000;
     transform: scale(1.05);
+    border: 2px solid #9e12e4;
 }
 
+
+.container_login input {
+    border: 2px solid transparent;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.container_login input:focus {
+    outline: none;
+    border: 2px solid #9e12e4;
+    box-shadow: 0 0 5px #9e12e4;
+}
+
+.container_login select {
+    border: 2px solid transparent;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.container_login select:focus {
+    outline: none;
+    border: 2px solid #9e12e4;
+    box-shadow: 0 0 5px #9e12e4;
+}
+.container{
+    display: flex;
+    height: 100%;
+}

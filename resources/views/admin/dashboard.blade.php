@@ -7,11 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Bienvenido a la página de inicio, eres Administrador;</h1>
     <?php
-    $contrasena = 'holamundo';
-    $contrahash = hash($contrasena, PASSWORD_BCRYPT, ['cost' => 12]);
-    echo $contrahash;
+    // $contraseña = "chupalo";
+    // $contraseña_hash = password_hash($contraseña, PASSWORD_DEFAULT, ['cost' => 12]);
+    // echo $contraseña_hash;
     ?>
-    
 </body>
 </html>

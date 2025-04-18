@@ -8,34 +8,68 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/171f3dc321.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <script src="https://kit.fontawesome.com/171f3dc321.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
-    
-    <div>
         <div class="container_login">
-            <form method="POST">
-                <div class='container_select'>
-                    <i class="fa-solid fa-person-chalkboard" style="color: #000000;"></i>
+            <header class="headerlogin">
+                <h1 class="">Iniciar sesión</h1>
+            </header>
+            @if ($errors->has('login_error'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('login_error') }}
+                </div>
+            @endif
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <div class="container_select mb-3">
+                    <i class="fa-solid fa-person-chalkboard"></i>
                     <label>Rol</label>
-                    <select class="form-select" name="rol_permiso" required>
-                        <option value="" disabled selected>Seleccione Rol</option>
-                        <option value="admin">administrador</option>
-                        <option value="usuario">trabajador</option>
+                    <select name="rol" class="form-select" required>
+                        <option value="" disabled {{ old('rol') ? '' : 'selected' }}>Selecciona un rol</option>
+                        <option value="1" {{ old('rol') == '1' ? 'selected' : '' }}>Administrador</option>
+                        <option value="2" {{ old('rol') == '2' ? 'selected' : '' }}>Usuario</option>
                     </select>
+                    @error('rol')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <div class="container_input">
-                <i class="fa-solid fa-circle-user fa-bounce fa-lg" style="color: #74C0FC;"></i>
-                <label>Usuario</label>
-                <input type="text" class="form-control" name="nombre_usuario" placeholder="example-admin123"required>
-                <i class="fa-solid fa-key" style="color: #FFD43B;"></i>
-                <label>Contraseña</label>
-                <input type="password" class="form-control" name="contrasena" placeholder="example-goticasdeidad" required>
-                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+
+                <div class="container_input mb-3">
+                    <i class="fa-solid fa-circle-user fa-bounce fa-lg"></i>
+                    <label>Usuario</label>
+                    <input type="text" class="form-control" name="user" value="{{ old('user') }}"
+                        placeholder="example-admin123" required>
+                    @error('user')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
+
+                <div class="container_input mb-3">
+                    <i class="fa-solid fa-key"></i>
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" name="password" placeholder="example-holamundo"
+                        required>
+                    @error('password')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Ingresar</button>
             </form>
+        </div>
+    </div>
+    <div class="logologin">
+        <img src="{{ asset('img/logo.jpg') }}" height="300px" width="300px" alt="Logo">
     </div>
 </body>
 
