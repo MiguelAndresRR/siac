@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
-        <header>
-            <h1>Bienvenido a la página de inicio, eres Trabajador></h1>
+        <h1>Bienvenido, {{ Auth::user()->user }} ({{ Auth::user()->id_rol == 1 ? 'Administrador' : 'Usuario' }})</h1>
+        <header class="header">
+            <nav class="nav">
+                <input type="text" class="nav-search" placeholder="Buscar...">
+                <div class="nav-user">
+                    <img src="{{ asset('img/user.png') }}" alt="User" class="nav-user-img">
+                    <span class="nav-user-name">{{ Auth::user()->user }}</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><a href="#" class="nav-menu-link">Inicio</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-menu-link">Usuarios</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-menu-link">Ventas</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-menu-link">Compras</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-menu-link">Reportes</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-menu-link">Compras</a></li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <li class="nav-menu-item">
+                        <a href="#" class="nav-menu-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </header>
     </div>
-
+    <?php
+    // $contraseña = "chupalo";
+    // $contraseña_hash = password_hash($contraseña, PASSWORD_DEFAULT, ['cost' => 12]);
+    // echo $contraseña_hash;
+    ?>
 </body>
+
 </html>

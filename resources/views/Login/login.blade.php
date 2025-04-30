@@ -18,58 +18,52 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="container_login">
-            <header class="headerlogin">
-                <h1 class="">Iniciar sesión</h1>
-            </header>
-            @if ($errors->has('login_error'))
-                <div class="alert alert-danger">
-                    {{ $errors->first('login_error') }}
-                </div>
-            @endif
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-
-                <div class="container_select mb-3">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <label>Rol</label>
-                    <select name="rol" class="form-select" required>
-                        <option value="" disabled {{ old('rol') ? '' : 'selected' }}>Selecciona un rol</option>
-                        <option value="1" {{ old('rol') == '1' ? 'selected' : '' }}>Administrador</option>
-                        <option value="2" {{ old('rol') == '2' ? 'selected' : '' }}>Usuario</option>
-                    </select>
-                    @error('rol')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="container_input mb-3">
-                    <i class="fa-solid fa-circle-user fa-bounce fa-lg"></i>
-                    <label>Usuario</label>
-                    <input type="text" class="form-control" name="user" value="{{ old('user') }}"
-                        placeholder="example-admin123" required>
-                    @error('user')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="container_input mb-3">
-                    <i class="fa-solid fa-key"></i>
-                    <label>Contraseña</label>
-                    <input type="password" class="form-control" name="password" placeholder="example-holamundo"
-                        required>
-                    @error('password')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <button type="submit" class="btn btn-primary mt-2">Ingresar</button>
-            </form>
+    <div class="layout">
+        <div class="image-side">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo del sistema">
         </div>
-    </div>
-    <div class="logologin">
-        <img src="{{ asset('img/logo.jpg') }}" height="300px" width="300px" alt="Logo">
+        <div class="form-side">
+            <div class="container_login">
+                <header class="headerlogin">
+                    <h1>Iniciar sesión</h1>
+                </header>
+
+                @if ($errors->has('login_error'))
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        {{ $errors->first('login_error') }}
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="container_select mb-3">
+                        <i class="fa-solid fa-briefcase" style="color: #74C0FC;"></i>
+                        <label>Rol</label>
+                        <select name="rol" class="form-select" required>
+                            <option value="" disabled {{ old('rol') ? '' : 'selected' }}>Selecciona rol</option>
+                            <option value="1" {{ old('rol') == '1' ? 'selected' : '' }}>Administrador</option>
+                            <option value="2" {{ old('rol') == '2' ? 'selected' : '' }}>Trabajador</option>
+                        </select>
+                    </div>
+
+                    <div class="container_input mb-3">
+                        <i class="fa-solid fa-user fa-fade" style="color: #ffffff;"></i>
+                        <label>Usuario</label>
+                        <input type="text" class="form-control" name="user" value="{{ old('user') }}"
+                            placeholder="example-admin123" required>
+                    </div>
+
+                    <div class="container_input mb-3">
+                        <i class="fa-solid fa-key" style="color: #FFD43B;"></i>
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" name="password" placeholder="example-holamundo"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-2">Ingresar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 

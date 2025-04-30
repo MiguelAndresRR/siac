@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthController extends Controller
 {
     public function showLogin()
@@ -25,8 +26,8 @@ class AuthController extends Controller
 
         // 2) Busca usuario con su rol
         $user = User::where('user', $data['user'])
-                    ->where('id_rol', $data['rol'])
-                    ->first();
+            ->where('id_rol', $data['rol'])
+            ->first();
 
         // 3) Verifica contraseña
         if ($user && Hash::check($data['password'], $user->password)) {
@@ -42,5 +43,15 @@ class AuthController extends Controller
         return back()->withErrors([
             'login_error' => 'Usuario, contraseña o rol incorrecto.',
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Cierra la sesión
+
+        $request->session()->invalidate(); // Invalida la sesión
+        $request->session()->regenerateToken(); // Regenera el token CSRF
+
+        return redirect('/login'); // Redirige a donde desees
     }
 }
