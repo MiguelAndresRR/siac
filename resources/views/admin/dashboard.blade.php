@@ -26,7 +26,7 @@
                 <i class="fa-solid fa-user"></i>
                 <span class="span-subtittle">Perfil</span>
             </a>
-            <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
+            <a onclick="window.location.href='{{ route('admin.productos') }}'" class="nav_link">
                 <i class="fa-solid fa-box"></i>
                 <span class="span-subtittle">Productos</span>
             </a>
@@ -49,12 +49,11 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-            
-            <a onclick="window.location.href='{{ route('logout') }}'" class="nav_link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a href="#" class="nav_link"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="span-subtittle">Cerrar sesión</span>
+                <span class="span-subtittle">Cerrar Sesión</span>
             </a>
-            
         </div>
     </div>
     <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>

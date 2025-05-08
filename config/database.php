@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'connections' => [
+    'mysql' => [
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -38,7 +38,7 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
             'busy_timeout' => null,
-            'journal_mode' => null,
+            'journal_mode' => null,  
             'synchronous' => null,
         ],
 
@@ -46,8 +46,8 @@ return [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
+            'port' => env('DB_PORT', '3311'),
+            'database' => env('DB_DATABASE', 'siac'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),

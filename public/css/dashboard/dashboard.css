@@ -1,36 +1,29 @@
-body{
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(45deg, #d3cce3, #fdfbfb, #c0d6e4, #e0c3fc);
-    background-size: 300% 300%;
-    animation: color 13s ease-in-out infinite;
-    display: flex;
-    height: 100vh;
-}
-@keyframes color {
-    0%{
-        background-position: 0% 50%;
-    }
-    25%{
-        background-position: 100% 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    75%{
-        background-position: 0% 50%;
-    }
-    100%{
-        background-position: 0% 50%;
-    }
-}
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.sidebar{
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #d3cce3, #fdfbfb, #c0d6e4, #e0c3fc);
+    background-size: 300% 300%;
+    animation: color 13s ease-in-out infinite;
+    overflow: hidden;
+}
+
+@keyframes color {
+    0%, 100% { background-position: 0% 50%; }
+    25%, 50% { background-position: 100% 50%; }
+    75% { background-position: 0% 50%; }
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
     width: 70px;
     transition: width 0.3s ease;
     overflow: hidden;
@@ -39,14 +32,18 @@ body{
     display: flex;
     flex-direction: column;
     position: fixed;
+    left: 0;
+    top: 0;
 }
-.sidebar.expanded{
+
+.sidebar.expanded {
     width: 200px;
 }
 
 .sidebar.collapsed .span-subtittle {
     display: none;
 }
+
 .sidebar a {
     display: flex;
     align-items: center;
@@ -60,21 +57,56 @@ body{
     border: 2px solid transparent;
     outline: none;
 }
+
 .sidebar a:hover {
     background-color: #ffffff;
-    color :#000000;
+    color: #000000;
     border-radius: 10px;
-    transition: all 0.3s ease;
     transform: scale(0.98);
     border: 2px solid #9e12e4;
-    overflow: none;
 }
 
-.sidebar a i {
-    size: 40px;
-}
 .span-subtittle {
-    font-size : 14px;
+    font-size: 14px;
+    margin-left: 10px;
     transition: opacity 0.3s ease;
-    margin-left:  10px;
 }
+
+/* Responsive sidebar */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        position: relative;
+        border: none;
+    }
+
+    .sidebar.expanded {
+        width: 100%;
+    }
+
+    .sidebar a {
+        justify-content: center;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .span-subtittle {
+        display: none;
+    }
+
+    body {
+        flex-direction: column;
+    }
+}
+
+/* Contenido productos */
+.content-productos {
+    margin-left: 70px;
+    width: calc(100vw - 70px);
+    height: 100vh;
+    overflow: auto;
+    padding: 10px;
+}
+
