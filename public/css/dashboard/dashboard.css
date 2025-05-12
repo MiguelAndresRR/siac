@@ -23,17 +23,14 @@ body {
 
 /* Sidebar */
 .sidebar {
-    position: fixed;
     width: 70px;
-    transition: width 0.3s ease;
+    transition: width 0.5s ease;
     overflow: hidden;
     background-color: #000000;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    left: 0;
-    top: 0;
+    margin-bottom: 20px;
 }
 
 .sidebar.expanded {
@@ -99,14 +96,5 @@ body {
     body {
         flex-direction: column;
     }
-}
-
-/* Contenido productos */
-.content-productos {
-    margin-left: 70px;
-    width: calc(100vw - 70px);
-    height: 100vh;
-    overflow: auto;
-    padding: 10px;
 }
 

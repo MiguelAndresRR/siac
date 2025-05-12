@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Unit;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,20 +14,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Product::with(['unidad', 'categoria'])->get();
+        return view('admin.productos.index', compact('productos'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $categorias = Category::all();
+        $unidades = Unit::all();
+        return view('admin.productos.create', compact('categorias', 'unidades'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([

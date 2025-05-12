@@ -26,7 +26,7 @@
                 <i class="fa-solid fa-user"></i>
                 <span class="span-subtittle">Perfil</span>
             </a>
-            <a onclick="window.location.href='{{ route('admin.productos') }}'" class="nav_link">
+            <a onclick="window.location.href='{{ route('admin.productos.index') }}'" class="nav_link">
                 <i class="fa-solid fa-box"></i>
                 <span class="span-subtittle">Productos</span>
             </a>
