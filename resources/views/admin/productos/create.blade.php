@@ -124,12 +124,12 @@
                 </select><br>
                 <button type="submit" class="btn btn-primary mt-2">Ingresar</button>
                 <p class="error" id="errorMessage"></p>
-                <div class="options-crud">
-                    <form action="{{ route('admin.productos.index') }}" method="get">
-                        <button type="submit" class="boton-regresar">Regresar</button>
-                    </form>
-                </div>
             </form>
+            <div class="options-crud">
+                <form action="{{ route('admin.productos.index') }}" method="get">
+                    <button type="submit" class="boton-regresar">Regresar</button>
+                </form>
+            </div>
         </div>
 
         <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
