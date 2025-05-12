@@ -87,6 +87,7 @@ body {
 }
 .container_login button {
     width: 100%;
+    transition: all 0.3s ease-in-out;
     border-radius: 10px;
     border: 2px solid transparent;
     outline: none;

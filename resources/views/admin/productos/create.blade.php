@@ -97,7 +97,8 @@
                 <label><i class="fa-sharp fa-solid fa-coins" style="color: #FFD43B;"></i>Precio del producto</label>
                 <input type="number" class="form-control" name="precio_producto" value="{{ old('precio_producto') }}"
                     placeholder="Precio del producto" required><br>
-                <label for=""><i class="fa-sharp fa-solid fa-layer-group" style="color: #ff0000;"></i>Categoría</label>
+                <label for=""><i class="fa-sharp fa-solid fa-layer-group"
+                        style="color: #ff0000;"></i>Categoría</label>
                 <select name="id_categoria_producto" id="" class="form-control" required>
                     <option value="" disabled {{ old('id_categoria_producto') ? '' : 'selected' }}>
                         Selecciona categoría
@@ -109,7 +110,8 @@
                         </option>
                     @endforeach
                 </select><br>
-                <label for=""><i class="fa-solid fa-scale-balanced" style="color: #04fb56;"></i>Unidad de medida</label>
+                <label for=""><i class="fa-solid fa-scale-balanced" style="color: #04fb56;"></i>Unidad de
+                    medida</label>
                 <select name="id_unidad_peso_producto" id="" class="form-control" required>
                     <option value="" disabled {{ old('id_unidad_peso_producto') ? '' : 'selected' }}>
                         Selecciona unidad de medida</option>
@@ -122,8 +124,15 @@
                 </select><br>
                 <button type="submit" class="btn btn-primary mt-2">Ingresar</button>
                 <p class="error" id="errorMessage"></p>
+                <div class="options-crud">
+                    <form action="{{ route('admin.productos.index') }}" method="get">
+                        <button type="submit" class="boton-regresar">Regresar</button>
+                    </form>
+                </div>
             </form>
         </div>
-    <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+
+        <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
 </body>
+
 </html>
