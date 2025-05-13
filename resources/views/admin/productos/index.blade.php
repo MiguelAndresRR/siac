@@ -73,7 +73,10 @@
         <div class="header">
             <h1><i class="fa-solid fa-cubes"></i>Productos</h1>
         </div>
-        <div class="container-productos">
+        <div class="container-productos-class">
+            <div class="container-productos">
+                <h2><i class="fa-solid fa-table-list"></i>Lista de Productos</h2>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -87,21 +90,36 @@
                                 <button type="submit">CREAR</button>
                             </form>
                         </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($productos as $producto)
+                        <tr>
+                            <td>{{ $producto->id_producto }}</td>
+                            <td>{{ $producto->nombre_producto }}</td>
+                            <td>{{ $producto->precio_producto }}</td>
+                            <td>{{ $producto->categoria->categoria }}</td>
+                            <td>{{ $producto->unidad->unidad_peso }}</td>
+                            <td>
+                                <form action="">
+                                    <button class="delete-buttom"></button>
+                                </form>
+                                <form method="POST" action="">
+                                    {{-- {{ route('admin.productos', $producto->id_producto) }} --}}
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete-button" type="submit" title="Eliminar">
+                                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                    </button>
+                                </form>
 
-                    </tr>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
-            <tbody>
-                @foreach ($productos as $producto)
-                    <tr>
-                        <td>{{ $producto->id_producto }}</td>
-                        <td>{{ $producto->nombre_producto }}</td>
-                        <td>{{ $producto->precio_producto }}</td>
-                        <td>{{ $producto->categoria->categoria }}</td>
-                        <td>{{ $producto->unidad->unidad_peso }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
         </div>
+
         <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
 </body>
 
