@@ -27,10 +27,13 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-
 </header>
 
 <body>
+    <div class="container">
+        @if (session('message'))
+        @endif
+    </div>
     <div class="sidebar collapsed" id="sidebar">
         <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
             <i class="fa-solid fa-house"></i>
@@ -75,7 +78,7 @@
         </div>
         <div class="container-productos-class">
             <div class="container-productos">
-                <h2><i class="fa-solid fa-table-list"></i>Lista de Productos</h2>
+                <h2>Lista de Productos</h2>
             </div>
             <table>
                 <thead>
@@ -87,7 +90,9 @@
                         <th>Unidad Medida</th>
                         <th>
                             <form method="get" action="{{ route('admin.productos.create') }}">
-                                <button type="submit">CREAR</button>
+                                <button class="buton-create" type="submit">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
                             </form>
                         </th>
                     </tr>
@@ -101,18 +106,24 @@
                             <td>{{ $producto->categoria->categoria }}</td>
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
-                                <form action="">
-                                    <button class="delete-buttom"></button>
-                                </form>
-                                <form method="POST" action="">
-                                    {{-- {{ route('admin.productos', $producto->id_producto) }} --}}
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="delete-button" type="submit" title="Eliminar">
-                                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-                                    </button>
-                                </form>
-
+                                <div class="button.container">
+                                    <form action="">
+                                        @method('UPDATE')
+                                        <button class="edit-button">
+                                            <i class="fa-solid fa-pen-to-square" style="color: #ffc800;"></i>
+                                        </button>
+                                    </form>
+                                    <form id="formEliminar{{ $producto->id_producto }}" method="POST"
+                                        action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="button" onclick="confirmarEliminacion({{ $producto->id_producto }})" class="btn btn-danger">
+                                            <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                                        </button>
+                                    </form>
+                                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                    <script src="{{ asset('js/dashboard/eliminarboton.js') }}"></script>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
