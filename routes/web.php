@@ -20,6 +20,7 @@ Route::middleware('prevent-back')->group(function () {
         Route::resource('admin/productos/index', ProductController::class)->except(['index']);
         Route::get('admin/productos/create', [ProductController::class, 'create'])->name('admin.productos.create');
         Route::post('admin/productos/index', [ProductController::class, 'store'])->name('admin.productos.index');
+        Route::get('admin/productos/{id_producto}', [ProductController::class, 'edit'])->name('admin.productos.edit');
         Route::delete('admin/productos/{id_producto}', [ProductController::class, 'destroy'])->name('admin.productos.destroy');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });

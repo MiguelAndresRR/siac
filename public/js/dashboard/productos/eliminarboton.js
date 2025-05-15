@@ -1,4 +1,4 @@
-function confirmarEliminacion(id) {
+function confirmarEliminacion(id_producto) {
     Swal.fire({
         title: "¿Estás seguro?",
         text: "¡No podrás revertir esto!",
@@ -10,8 +10,7 @@ function confirmarEliminacion(id) {
         cancelButtonText: "Cancelar",
     }).then((result) => {
         if (result.isConfirmed) {
-            // Si el usuario confirma, se envía el formulario
-            document.getElementById("formEliminar" + id).submit();
+            document.getElementById("formEliminar" + id_producto).submit();
         }
     });
 }

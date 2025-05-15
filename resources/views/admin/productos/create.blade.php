@@ -116,7 +116,6 @@
                 </form>
             </div>
         </div>
-
         <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
 </body>
 

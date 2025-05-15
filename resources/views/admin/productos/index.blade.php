@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{{ asset('css/dashboard/productos.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-</header>
+    </header>
 
 <body>
     <div class="container">
@@ -96,27 +98,35 @@
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
                                 <div class="button.container">
-                                    <form action="">
+                                    <form action="{{ route('admin.productos.edit', $producto->id_producto) }}">
                                         @method('UPDATE')
-                                        <button type="button" class="edit-button">
+                                        <button type="button" class='edit-button'
+                                            data-id="{{ $producto->id_producto }}">
                                             <i class="fa-solid fa-pen-to-square" style="color: #ffc800;"></i>
                                         </button>
+                                        <script src="{{ asset('js/dashboard/productos/editform.js')}}"></script>
                                     </form>
-                                    <form id="formEliminar{{ $producto->id_producto }}" method="POST" action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
+                                    <form id="formEliminar{{ $producto->id_producto }}" method="POST"
+                                        action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="button" onclick="confirmarEliminacion({{ $producto->id_producto }})" class="btn btn-danger">
+                                        <button type="button"
+                                            onclick="confirmarEliminacion({{ $producto->id_producto }})"
+                                            class="btn btn-danger">
                                             <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
                                         </button>
+                                        <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
                                     </form>
                                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                                    <script src="{{ asset('js/dashboard/eliminarboton.js') }}"></script>
+
                                 </div>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div id="form-edit" style="display: none;"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         </div>
 
         <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>

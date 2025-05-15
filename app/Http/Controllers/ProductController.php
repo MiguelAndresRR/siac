@@ -51,22 +51,19 @@ class ProductController extends Controller
         }
     }
 
-    public function show(Product $rc)
+    public function show(Product $id_producto)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $rc)
+    public function edit(Product $id_producto)
     {
-        //
+        $producto = Product::findOrFail($id_producto);
+        $categorias = Category::all();
+        $unidades = Unit::all();
+        return view('productos.partials.edit-form', compact('Product','Category','Unit'));
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Product $Product)
     {
         //
