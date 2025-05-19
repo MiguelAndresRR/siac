@@ -14,14 +14,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $productos = Product::with(['unidad', 'categoria'])->get();
-        return view('admin.productos.index', compact('productos'));
+        $productos = Product::all();
+        $categorias = Category::all();
+        $unidades = Unit::all();
+        return view('admin.productos.index', compact('productos', 'categorias', 'unidades'));
     }
     public function create()
     {
-        $categorias = Category::all();
-        $unidades = Unit::all();
-        return view('admin.productos.create', compact('categorias', 'unidades'));
+        //
     }
     public function store(Request $request)
     {
@@ -38,40 +38,60 @@ class ProductController extends Controller
             ->first();
 
         if ($existingProduct) {
-            return redirect()->back()->with('message', [
+            return redirect()->route('admin.productos.index')->with('message', [
                 'type' => 'error',
                 'text' => 'El producto ya existe en la base de datos.'
             ]);
         } else {
-            $product = Product::create($request->all());
-            return redirect()->back()->with('message', [
+            $producto = Product::create($request->all());
+            return redirect()->route('admin.productos.index')->with('message', [
                 'type' => 'success',
                 'text' => 'El producto se ha creado correctamente.'
             ]);
         }
     }
 
-    public function show(Product $id_producto)
+    public function show(Product $producto)
     {
-        //
+        return response()->json($producto);
     }
-    public function edit(Product $id_producto)
+    public function edit(Product $producto) {}
+
+    public function update(Request $request, Product $producto)
     {
-        $producto = Product::findOrFail($id_producto);
-        $categorias = Category::all();
-        $unidades = Unit::all();
-        return view('productos.partials.edit-form', compact('Product','Category','Unit'));
-        
+        $request->validate([
+            'nombre_producto' => 'required|string|max:255',
+            'precio_producto' => 'required|numeric|min:0',
+            'id_categoria_producto' => 'required|exists:categoria_producto,id_categoria_producto',
+            'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
+        ]);
+
+        // Buscar si existe otro producto igual (que no sea este)
+        $existingProduct = Product::where('nombre_producto', $request->nombre_producto)
+            ->where('id_categoria_producto', $request->id_categoria_producto)
+            ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
+            ->where('id_producto', '!=', $producto->id_producto)
+            ->first();
+
+        if ($existingProduct) {
+            return redirect()->route('admin.productos.index')->with('message', [
+                'type' => 'error',
+                'text' => 'El producto ya existe en la base de datos.'
+            ]);
+        } else {
+            $producto->nombre_producto = $request->nombre_producto;
+            $producto->precio_producto = $request->precio_producto;
+            $producto->id_categoria_producto = $request->id_categoria_producto;
+            $producto->id_unidad_peso_producto = $request->id_unidad_peso_producto;
+
+            $producto->save();
+            return redirect()->route('admin.productos.index')->with('message', [
+                'type' => 'success',
+                'text' => 'El producto se ha actualizado correctamente.'
+            ]);
+        }
     }
 
-    public function update(Request $request, Product $Product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id_producto)
     {
         $producto = Product::find($id_producto);

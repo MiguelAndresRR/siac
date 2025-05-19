@@ -16,13 +16,22 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-    </header>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{{ asset('css/dashboard/editar.css') }}">
+    </heade>
 
 <body>
     <div class="container">
         @if (session('message'))
+            <script>
+                Swal.fire({
+                    title: {!! session('message')['type'] === 'error' ? json_encode('Error') : json_encode('Éxito') !!},
+                    text: @json(session('message')['text']),
+                    icon: @json(session('message')['type']),
+                    confirmButtonText: 'Aceptar'
+                });
+            </script>
         @endif
     </div>
     <div class="sidebar collapsed" id="sidebar">
@@ -80,12 +89,11 @@
                         <th>Categoria</th>
                         <th>Unidad Medida</th>
                         <th>
-                            <form method="get" action="{{ route('admin.productos.create') }}">
-                                <button class="buton-create" type="submit">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </form>
+                            <button type="submit" class="btn" id='crear-modal'>
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
                         </th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -98,14 +106,10 @@
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
                                 <div class="button.container">
-                                    <form action="{{ route('admin.productos.edit', $producto->id_producto) }}">
-                                        @method('UPDATE')
-                                        <button type="button" class='edit-button'
-                                            data-id="{{ $producto->id_producto }}">
-                                            <i class="fa-solid fa-pen-to-square" style="color: #ffc800;"></i>
-                                        </button>
-                                        <script src="{{ asset('js/dashboard/productos/editform.js')}}"></script>
-                                    </form>
+                                    <button type="submit" class="btn-editar" id="editar-modal"
+                                        data-id_producto="{{ $producto->id_producto }}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
                                     <form id="formEliminar{{ $producto->id_producto }}" method="POST"
                                         action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
                                         @method('DELETE')
@@ -115,21 +119,20 @@
                                             class="btn btn-danger">
                                             <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
                                         </button>
-                                        <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
                                     </form>
-                                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
                                 </div>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div id="form-edit" style="display: none;"></div>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         </div>
-
+        @include('admin.productos.modal.edit')
+        @include('admin.productos.modal.create')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+        <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
+        <script src="{{ asset('js/dashboard/productos/editar.js') }}"></script>
+    </div>
 </body>
-
-</html>
+</head>

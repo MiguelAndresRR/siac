@@ -16,12 +16,21 @@ Route::middleware('prevent-back')->group(function () {
         Route::get('/user/dashboard', function () {
             return view('user.dashboard');
         })->name('user.dashboard');
+        // Mostrar la lista de productos
         Route::get('admin/productos/index', [ProductController::class, 'index'])->name('admin.productos.index');
-        Route::resource('admin/productos/index', ProductController::class)->except(['index']);
+        // Formulario para crear un nuevo producto
         Route::get('admin/productos/create', [ProductController::class, 'create'])->name('admin.productos.create');
-        Route::post('admin/productos/index', [ProductController::class, 'store'])->name('admin.productos.index');
-        Route::get('admin/productos/{id_producto}', [ProductController::class, 'edit'])->name('admin.productos.edit');
-        Route::delete('admin/productos/{id_producto}', [ProductController::class, 'destroy'])->name('admin.productos.destroy');
+        // Guardar nuevo producto (form create)
+        Route::post('admin/productos/index', [ProductController::class, 'store'])->name('admin.productos.store');
+        // Mostrar el formulario de edición
+        Route::get('admin/productos/index/{producto}', [ProductController::class, 'edit'])->name('admin.productos.edit');
+        // Actualizar producto (form edit)  
+        Route::get('admin/productos/{producto}', [ProductController::class, 'show'])->name('admin.productos.show');
+        //Actualiza el
+        Route::put('The PUT method is not supported for route admin/productos/index. Supported methods: GET, HEAD, POST, DELETE.', [ProductController::class, 'update'])->name('admin.productos.update');
+        // Eliminar producto
+        Route::delete('admin/productos/{producto}', [ProductController::class, 'destroy'])->name('admin.productos.destroy');
+        // Logout
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });

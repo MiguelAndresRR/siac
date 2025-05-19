@@ -1,12 +1,6 @@
-.content-productos {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    width: 100vw;
-}
 
-.registrar-producto-container{
+
+.modificar-producto-container{
     border-radius: 10px;
     height: 90%;
     width: 100%;
@@ -19,13 +13,13 @@
     margin-bottom: 20px;
 }
 
-.registrar-producto-container h2{
+.modificar-producto-container h2{
     place-items: left;
     justify-items: left;
     padding: 4px;
     margin-bottom: 20px;
 }
-.registrar-producto-container form{
+.modificar-producto-container form{
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -72,7 +66,7 @@
         -webkit-appearance: none;
         margin: 0;
     }
-    .registrar-producto-container button{
+    .modificar-producto-container button{
         width: 100%;
         border-radius: 10px;
         border: 2px solid transparent;
@@ -92,7 +86,7 @@
             border: 2px solid #9e12e4;
         }
     }
-    .container-modal-crear{
+    .container-modal-editar{
         position: fixed;
         top: 0;
         left:0;
@@ -106,14 +100,14 @@
         justify-content: center;
         align-items: center;
     }
-    .container-modal-crear.mostrar {
+    .container-modal-editar.mostrar {
         background-color: rgba(0, 0, 0, 0.6); 
         z-index: 1;
         opacity: 1;
         transition: all 0.5s ease-in-out;
     }
 
-    .container-modal-crear .modal{
+    .container-modal-editar .modal{
         width: 100%;
         display: flex;
         margin: 0 500px;
@@ -126,7 +120,7 @@
         width: 100%;
         display: flex;
     }
-    .registrar-producto-container{
+    .modificar-producto-container{
         background-color: white;
         opacity: none;
         width: 50%;
