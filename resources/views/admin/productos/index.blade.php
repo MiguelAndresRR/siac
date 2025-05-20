@@ -105,10 +105,12 @@
                             <td>{{ $producto->categoria->categoria }}</td>
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
-                                <button type="submit" class="btn-editar" id="editar-modal"
+                                <!-- CORREGIDO -->
+                                <button type="submit" class="btn-editar"
                                     data-id_producto="{{ $producto->id_producto }}">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
+
                                 <form id="formEliminar{{ $producto->id_producto }}" method="POST"
                                     action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
                                     @method('DELETE')

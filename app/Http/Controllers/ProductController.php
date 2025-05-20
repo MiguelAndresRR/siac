@@ -66,9 +66,7 @@ class ProductController extends Controller
             'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
         ]);
 
-        // Buscar si existe otro producto igual (que no sea este)
-        $existingProduct = Product::where('nombre_producto', $request->nombre_producto)
-            ->where('id_categoria_producto', $request->id_categoria_producto)
+        $existingProduct = Product::where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
             ->where('id_producto', '!=', $producto)
             ->first();
