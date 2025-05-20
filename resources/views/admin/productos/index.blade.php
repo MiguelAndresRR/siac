@@ -105,34 +105,32 @@
                             <td>{{ $producto->categoria->categoria }}</td>
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
-                                <div class="button.container">
-                                    <button type="submit" class="btn-editar" id="editar-modal"
-                                        data-id_producto="{{ $producto->id_producto }}">
-                                        <i class="fa-solid fa-pen-to-square"></i>
+                                <button type="submit" class="btn-editar" id="editar-modal"
+                                    data-id_producto="{{ $producto->id_producto }}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <form id="formEliminar{{ $producto->id_producto }}" method="POST"
+                                    action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="button" onclick="confirmarEliminacion({{ $producto->id_producto }})"
+                                        class="btn btn-danger">
+                                        <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
                                     </button>
-                                    <form id="formEliminar{{ $producto->id_producto }}" method="POST"
-                                        action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="button"
-                                            onclick="confirmarEliminacion({{ $producto->id_producto }})"
-                                            class="btn btn-danger">
-                                            <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        @include('admin.productos.modal.edit')
-        @include('admin.productos.modal.create')
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
-        <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
-        <script src="{{ asset('js/dashboard/productos/editar.js') }}"></script>
     </div>
+    @include('admin.productos.modal.edit')
+    @include('admin.productos.modal.create')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+    <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
+    <script src="{{ asset('js/dashboard/productos/editarboton.js') }}"></script>
+    <script src="{{ asset('js/dashboard/productos/crearboton.js') }}"></script>
 </body>
 </head>

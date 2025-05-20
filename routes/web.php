@@ -27,7 +27,7 @@ Route::middleware('prevent-back')->group(function () {
         // Actualizar producto (form edit)  
         Route::get('admin/productos/{producto}', [ProductController::class, 'show'])->name('admin.productos.show');
         //Actualiza el
-        Route::put('The PUT method is not supported for route admin/productos/index. Supported methods: GET, HEAD, POST, DELETE.', [ProductController::class, 'update'])->name('admin.productos.update');
+        Route::put('admin/productos/{producto}', [ProductController::class, 'update'])->name('admin.productos.update');
         // Eliminar producto
         Route::delete('admin/productos/{producto}', [ProductController::class, 'destroy'])->name('admin.productos.destroy');
         // Logout

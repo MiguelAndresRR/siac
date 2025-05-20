@@ -1,4 +1,4 @@
-<div class="container-modal-editar">
++<div class="container-modal-editar">
     <div class="modificar-producto-container">
         <h2>Modificar producto</h2>
         <form id="form_editar" method="POST" enctype="multipart/form-data"
@@ -46,4 +46,3 @@
     </div>
 </div>
 <script src="{{ asset('js/dashboard/productos/editarboton.js') }}"></script>
-<script src="{{ asset('js/dashboard/productos/editar.js') }}">

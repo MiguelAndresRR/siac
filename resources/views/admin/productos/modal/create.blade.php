@@ -1,7 +1,7 @@
 <div class="container-modal-crear">
     <div class="registrar-producto-container">
         <h2>Registrar producto</h2>
-        <form action="{{ route('admin.productos.index') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="nombre_producto"><i class="fa-solid fa-cubes"></i>Producto</label>
             <input type="text" class="form-control" id="nombre_producto" name="nombre_producto"
@@ -38,7 +38,7 @@
             <button type="submit">Crear</button>
             <p class="error" id="errorMessage"></p>
         </form>
-        <button type="submit" class="btn" id='ocultar-modal-crear'>Salir</button>
+        <button type="submit" class="btn" id='ocultar-modal-crear'>Cancelar</button>
     </div>
 </div>
 <script src="{{ asset('js/dashboard/productos/crearboton.js') }}"></script>

@@ -70,7 +70,7 @@ class ProductController extends Controller
         $existingProduct = Product::where('nombre_producto', $request->nombre_producto)
             ->where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
-            ->where('id_producto', '!=', $producto->id_producto)
+            ->where('id_producto', '!=', $producto)
             ->first();
 
         if ($existingProduct) {
@@ -83,7 +83,6 @@ class ProductController extends Controller
             $producto->precio_producto = $request->precio_producto;
             $producto->id_categoria_producto = $request->id_categoria_producto;
             $producto->id_unidad_peso_producto = $request->id_unidad_peso_producto;
-
             $producto->save();
             return redirect()->route('admin.productos.index')->with('message', [
                 'type' => 'success',
