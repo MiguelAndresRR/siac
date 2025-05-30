@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="{{ asset('css/dashboard/editar.css') }}">
-    </heade>
+</head>
 
 <body>
     <div class="container">
@@ -105,20 +105,22 @@
                             <td>{{ $producto->categoria->categoria }}</td>
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
-                                <!-- CORREGIDO -->
+                                <button type="submit" class="btn-show" data-id_producto="{{ $producto->id_producto }}">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
                                 <button type="submit" class="btn-editar"
                                     data-id_producto="{{ $producto->id_producto }}">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-
+                                <button type="button" class="borrar-boton btn btn-danger"
+                                    data-id_producto="{{ $producto->id_producto }}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                                 <form id="formEliminar{{ $producto->id_producto }}" method="POST"
-                                    action="{{ route('admin.productos.destroy', $producto->id_producto) }}">
-                                    @method('DELETE')
+                                    action="{{ route('admin.productos.destroy', $producto->id_producto) }}"
+                                    style="display: none;">
                                     @csrf
-                                    <button type="button" onclick="confirmarEliminacion({{ $producto->id_producto }})"
-                                        class="btn btn-danger">
-                                        <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
-                                    </button>
+                                    @method('DELETE')
                                 </form>
                             </td>
                         </tr>
@@ -129,6 +131,7 @@
     </div>
     @include('admin.productos.modal.edit')
     @include('admin.productos.modal.create')
+    @include('admin.productos.modal.show')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>

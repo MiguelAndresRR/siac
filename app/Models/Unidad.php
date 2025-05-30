@@ -7,7 +7,7 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Unit extends Model
+class Unidad extends Model
 {
     use HasFactory;
 
@@ -24,6 +24,6 @@ class Unit extends Model
 
     public function productos(): HasMany
     {
-        return $this->hasMany(Product::class, 'id_unidad_peso_producto');
+        return $this->hasMany(Producto::class, 'id_unidad_peso_producto');
     }
 }

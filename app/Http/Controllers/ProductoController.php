@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Unit;
-use App\Models\Product;
+use App\Models\Categoria;
+use App\Models\Unidad;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $productos = Product::all();
-        $categorias = Category::all();
-        $unidades = Unit::all();
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+        $unidades = Unidad::all();
         return view('admin.productos.index', compact('productos', 'categorias', 'unidades'));
     }
     public function create()
@@ -32,7 +32,7 @@ class ProductController extends Controller
             'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
         ]);
 
-        $existingProduct = Product::where('nombre_producto', $request->nombre_producto)
+        $existingProduct = Producto::where('nombre_producto', $request->nombre_producto)
             ->where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
             ->first();
@@ -43,21 +43,27 @@ class ProductController extends Controller
                 'text' => 'El producto ya existe en la base de datos.'
             ]);
         } else {
-            $producto = Product::create($request->all());
+            $producto = Producto::create($request->all());
             return redirect()->route('admin.productos.index')->with('message', [
                 'type' => 'success',
                 'text' => 'El producto se ha creado correctamente.'
             ]);
         }
     }
-
-    public function show(Product $producto)
+    public function show(Producto $producto)
     {
-        return response()->json($producto);
+        return response()->json([
+            'nombre_producto' => $producto->nombre_producto,               // ajusta según tu campo real
+            'precio_producto' => $producto->precio_producto,               // ajusta según tu campo real
+            'id_categoria_producto' => $producto->id_categoria_producto ?? 'Sin categoría',
+            'id_unidad_peso_producto' => $producto->id_unidad_peso_producto?? 'Sin unidad',
+        ]);
+        return view('admin.productos.show', compact('producto'));
     }
-    public function edit(Product $producto) {}
 
-    public function update(Request $request, Product $producto)
+    public function edit(Producto $producto) {}
+
+    public function update(Request $request, Producto $producto)
     {
         $request->validate([
             'nombre_producto' => 'required|string|max:255',
@@ -66,7 +72,7 @@ class ProductController extends Controller
             'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
         ]);
 
-        $existingProduct = Product::where('id_categoria_producto', $request->id_categoria_producto)
+        $existingProduct = Producto::where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
             ->where('id_producto', '!=', $producto)
             ->first();
@@ -91,7 +97,7 @@ class ProductController extends Controller
 
     public function destroy($id_producto)
     {
-        $producto = Product::find($id_producto);
+        $producto = Producto::find($id_producto);
         if (!$producto) {
             return redirect()->back()->with('message', [
                 'type' => 'error',

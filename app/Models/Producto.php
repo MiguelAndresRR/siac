@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Category;
-use App\Models\Unit;
+use App\Models\Categoria;
+use App\Models\Unidad;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model
+class Producto extends Model
 {
     use HasFactory;
 
@@ -25,11 +25,11 @@ class Product extends Model
     ];
     public function unidad()
     {
-        return $this->belongsTo(Unit::class, 'id_unidad_peso_producto');
+        return $this->belongsTo(Unidad::class, 'id_unidad_peso_producto');
     }
     public function categoria()
     {
-        return $this->belongsTo(Category::class, 'id_categoria_producto');
+        return $this->belongsTo(Categoria::class, 'id_categoria_producto');
     }
     
 }

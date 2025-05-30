@@ -1,6 +1,6 @@
 
 
-.modificar-producto-container{
+.modificar-producto-container, .mostrar-producto-container {
     border-radius: 10px;
     height: 90%;
     width: 100%;
@@ -13,7 +13,7 @@
     margin-bottom: 20px;
 }
 
-.modificar-producto-container h2{
+.modificar-producto-container h2, .mostrar-producto-container h2 {
     place-items: left;
     justify-items: left;
     padding: 4px;
@@ -66,7 +66,7 @@
         -webkit-appearance: none;
         margin: 0;
     }
-    .modificar-producto-container button{
+    .modificar-producto-container button, .mostrar-producto-container button {
         width: 100%;
         border-radius: 10px;
         border: 2px solid transparent;
@@ -86,7 +86,7 @@
             border: 2px solid #9e12e4;
         }
     }
-    .container-modal-editar{
+    .container-modal-editar, .container-modal-show {
         position: fixed;
         top: 0;
         left:0;
@@ -100,14 +100,14 @@
         justify-content: center;
         align-items: center;
     }
-    .container-modal-editar.mostrar {
+    .container-modal-editar.mostrar, .container-modal-show.mostrar {
         background-color: rgba(0, 0, 0, 0.6); 
         z-index: 1;
         opacity: 1;
         transition: all 0.5s ease-in-out;
     }
 
-    .container-modal-editar .modal{
+    .container-modal-editar .modal, .container-modal-show .modal {
         width: 100%;
         display: flex;
         margin: 0 500px;
@@ -120,7 +120,7 @@
         width: 100%;
         display: flex;
     }
-    .modificar-producto-container{
+    .modificar-producto-container, .mostrar-producto-container {
         background-color: white;
         opacity: none;
         width: 50%;
