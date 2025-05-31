@@ -23,7 +23,7 @@ class ProductoController extends Controller
     {
         //
     }
-    public function store(Request $request)
+    public function store(Request $request, Producto $producto)
     {
         $request->validate([
             'nombre_producto' => 'required|string|max:255',
@@ -32,9 +32,10 @@ class ProductoController extends Controller
             'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
         ]);
 
-        $existingProduct = Producto::where('nombre_producto', $request->nombre_producto)
-            ->where('id_categoria_producto', $request->id_categoria_producto)
+        $existingProduct = Producto::where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
+            ->where('nombre_producto', $request->nombre_producto)
+            ->where('id_producto', '!=', $producto->id_producto)
             ->first();
 
         if ($existingProduct) {
@@ -53,15 +54,19 @@ class ProductoController extends Controller
     public function show(Producto $producto)
     {
         return response()->json([
-            'nombre_producto' => $producto->nombre_producto,               // ajusta según tu campo real
-            'precio_producto' => $producto->precio_producto,               // ajusta según tu campo real
-            'id_categoria_producto' => $producto->id_categoria_producto ?? 'Sin categoría',
-            'id_unidad_peso_producto' => $producto->id_unidad_peso_producto?? 'Sin unidad',
+            'id_producto' => $producto->id_producto,
+            'nombre_producto' => $producto->nombre_producto,
+            'precio_producto' => $producto->precio_producto,
+            'id_categoria_producto' => $producto->id_categoria_producto,
+            'categoria' => $producto->categoria ? $producto->categoria->categoria : 'Sin categoría',
+            'id_unidad_peso_producto' => $producto->id_unidad_peso_producto,
+            'unidad' => $producto->unidad ? $producto->unidad->unidad_peso : 'Sin unidad',
         ]);
-        return view('admin.productos.show', compact('producto'));
     }
 
-    public function edit(Producto $producto) {}
+    public function edit(Producto $producto) {
+        
+    }
 
     public function update(Request $request, Producto $producto)
     {
@@ -74,7 +79,8 @@ class ProductoController extends Controller
 
         $existingProduct = Producto::where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
-            ->where('id_producto', '!=', $producto)
+            ->where('nombre_producto', $request->nombre_producto)
+            ->where('id_producto', '!=', $producto->id_producto)
             ->first();
 
         if ($existingProduct) {

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="{{ asset('css/dashboard/editar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard/mostrar.css') }}">
 </head>
 
 <body>
@@ -29,7 +30,11 @@
                     title: {!! session('message')['type'] === 'error' ? json_encode('Error') : json_encode('Éxito') !!},
                     text: @json(session('message')['text']),
                     icon: @json(session('message')['type']),
-                    confirmButtonText: 'Aceptar'
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                        confirmButton: 'btn-confirmar'
+                    },
+                    buttonsStyling: false
                 });
             </script>
         @endif
@@ -77,9 +82,6 @@
             <h1><i class="fa-solid fa-cubes"></i>Productos</h1>
         </div>
         <div class="container-productos-class">
-            <div class="container-productos">
-                <h2>Lista de Productos</h2>
-            </div>
             <table>
                 <thead>
                     <tr>
@@ -105,7 +107,7 @@
                             <td>{{ $producto->categoria->categoria }}</td>
                             <td>{{ $producto->unidad->unidad_peso }}</td>
                             <td>
-                                <button type="submit" class="btn-show" data-id_producto="{{ $producto->id_producto }}">
+                                <button type="submit" class="btn-ver" data-id_producto="{{ $producto->id_producto }}">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
                                 <button type="submit" class="btn-editar"
@@ -137,5 +139,6 @@
     <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/editarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/crearboton.js') }}"></script>
+    <script src="{{ asset('js/dashboard/productos/showboton.js') }}"></script>
 </body>
 </head>
