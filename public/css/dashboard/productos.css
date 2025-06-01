@@ -236,7 +236,7 @@ tbody {
 }
 
 #botones .btn-editar:hover {
-    background-color: #fff704;
+    background-color: #ffd904;
     transform: scale(1.05);
 }
 #botones .btn-ver:hover {
@@ -246,4 +246,33 @@ tbody {
 #botones .borrar-boton:hover {
     background-color: #fe0239;
     transform: scale(1.05);
+}
+.filtros{
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px;
+    justify-content: left;
+    gap: 10px;
+}
+.form-control{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 80%;
+}
+#search {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+
+    transition: all 0.3s ease-in-out;
+    &:focus {
+        border: 2px solid #9e12e4;
+        box-shadow: 0 0 5px #9e12e4;
+    }
 }

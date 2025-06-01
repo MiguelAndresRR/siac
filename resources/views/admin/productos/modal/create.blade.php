@@ -8,7 +8,7 @@
                 value="{{ old('nombre_producto') }}" placeholder="Nombre del producto" required><br>
             <label for="precio_producto"><i class="fa-sharp fa-solid fa-coins" style="color: #FFD43B;"></i>Precio del
                 producto</label>
-            <input type="number" class="form-control" id="precio_producto" name="precio_producto"
+            <input type="number" class="form-control" id="precio_producto" name="precio_producto" pattern="^\d{1,10}(\.\d{1,2})?$"  maxlength="13" required
                 value="{{ old('precio_producto') }}" placeholder="Precio del producto" required><br>
             <label for="id_categoria_producto"><i class="fa-sharp fa-solid fa-layer-group"
                     style="color: #ff0000;"></i>Categoría</label>

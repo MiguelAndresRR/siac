@@ -12,9 +12,8 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $productos = Producto::all();
+    public function index(Request $request){
+        $productos = Producto::paginate();
         $categorias = Categoria::all();
         $unidades = Unidad::all();
         return view('admin.productos.index', compact('productos', 'categorias', 'unidades'));
