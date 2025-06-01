@@ -106,7 +106,7 @@
                             <td>{{ $producto->precio_producto }}</td>
                             <td>{{ $producto->categoria->categoria }}</td>
                             <td>{{ $producto->unidad->unidad_peso }}</td>
-                            <td>
+                            <td id="botones">
                                 <button type="submit" class="btn-ver" data-id_producto="{{ $producto->id_producto }}">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>

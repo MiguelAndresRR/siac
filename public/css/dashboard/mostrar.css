@@ -30,13 +30,11 @@
     font-family: Arial, sans-serif;
 }
 
-/* Títulos */
 .container-modal-show h2 {
     margin-bottom: 20px;
     color: #000;
 }
 
-/* Inputs para mostrar los datos, solo lectura */
 .container-modal-show input {
     width: 100%;
     padding: 10px;
@@ -48,19 +46,23 @@
     background-color: #f9f9f9;
 }
 
-/* Botón cerrar */
 .container-modal-show button#ocultar-modal1 {
     width: 100%;
-    padding: 12px;
-    background-color: #000;
-    color: white;
-    font-size: 16px;
-    border: none;
     border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #000000;
+    color: #ffffff;
+    height: 40px;
+    border: 2px solid transparent;
+    outline: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
 .container-modal-show button#ocultar-modal1:hover {
-    background-color: #444;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #000000; 
+    transform: scale(1.05);
+    border: 2px solid #9e12e4;
 }
