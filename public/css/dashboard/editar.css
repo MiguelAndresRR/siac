@@ -32,6 +32,7 @@
         background-color: #ffffff;
         color: #000000;
         font-size: 16px;
+                width: 100%;
         margin-bottom:10px;
         &:focus{
             border: 2px solid #9e12e4;
@@ -43,7 +44,7 @@
     & select{
         border: 2px solid transparent;
         outline: none;
-        width: 100%;
+
         padding: 10px;
         border-radius: 10px;
         background-color: #ffffff;

@@ -134,119 +134,13 @@ form {
     justify-content: none;
     flex-direction: none;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
 
-    overflow: hidden;
 
-    
-}
-thead {
-    background-color: #000000;
-    color: #ffffff;
-    margin: 0;
-    & th {
-        text-align: center;
-        font-weight: bold;
-        font-size: 16px;
-        align-content: center;
-        padding: 4px;
-        & #crear-modal{
-            background-color: #000000;
-            width: 100%;
-            color: #ffffff;
-            border: none;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            padding: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            &:hover{
-                background-color: #00ff4c;
-                color: #ffffff;
-                transform: scale(1.03);
-            }
-        }
-    }
-}
 .form-eliminar {
     margin: 0;
     padding: 0;
 }
-tbody {
-    background-color: #ffffff;
-    color: #000000;
-    & td {
-        text-align: center;
-        }
-}
-.btn-confirmar {
-    background-color: #000000 !important;
-    color: #fff !important;
-    border: none;
-    padding: 8px 16px;
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    outline: none;
-    margin-right: 5px;
-}
 
-.btn-confirmar:hover {
-    background-color: #ffffff !important;
-    border-radius: 10px;
-    color: #000000 !important; 
-    transform: scale(1.05);
-    border: 2px solid #9e12e4;
-}
-
-.btn-cancelar {
-    background-color: #000000 !important;
-    color: #fff !important;
-    border: none;
-    padding: 8px 16px;
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    outline: none;
-    margin-left: 5px;
-    
-}
-
-.btn-cancelar:hover {
-    background-color: #ffffff !important;
-    border-radius: 10px;
-    color: #000000 !important; 
-    transform: scale(1.05);
-    border: 2px solid #9e12e4;
-}
-#botones button {
-    width: 30%;
-    border-radius: 10px;
-    background-color: #000000;
-    color: #ffffff;
-    height: 40px;
-    border: 2px solid transparent;
-    outline: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    transition: all 0.3s ease-in-out;
-}
-
-#botones .btn-editar:hover {
-    background-color: #ffd904;
-    transform: scale(1.05);
-}
-#botones .btn-ver:hover {
-    background-color: #9e12e4;
-    transform: scale(1.05);
-}
-#botones .borrar-boton:hover {
-    background-color: #fe0239;
-    transform: scale(1.05);
-}
 .filtros{
     display: flex;
     margin-bottom: 10px;
@@ -260,7 +154,7 @@ tbody {
     gap: 5px;
     width: 80%;
 }
-#search {
+#buscarProducto {
     width: 80%;
     padding: 10px;
     border-radius: 10px;

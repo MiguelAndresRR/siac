@@ -20,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="{{ asset('css/dashboard/editar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard/mostrar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard/tabla.css') }}">
 </head>
 
 <body>
@@ -39,115 +40,14 @@
             </script>
         @endif
     </div>
-    <div class="sidebar collapsed" id="sidebar">
-        <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
-            <i class="fa-solid fa-house"></i>
-            <span class="span-subtittle">Inicio</span>
-        </a>
-        <a onclick="window.location.href='{{ route('admin.productos.index') }}'" class="nav_link">
-            <i class="fa-solid fa-box"></i>
-            <span class="span-subtittle">Productos</span>
-        </a>
-        <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
-            <i class="fa-solid fa-paper-plane"></i>
-            <span class="span-subtittle">Reportes</span>
-        </a>
-        <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span class="span-subtittle">Compras</span>
-        </a>
-        <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
-            <i class="fa-solid fa-users"></i>
-            <span class="span-subtittle">Usuarios</span>
-        </a>
-        <a onclick="window.location.href='{{ route('admin.dashboard') }}'" class="nav_link">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-            <span class="span-subtittle">Clientes</span>
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-        <a href="#" class="nav_link"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <span class="span-subtittle">Cerrar Sesión</span>
-        </a>
-    </div>
+    @include('admin.layout.sidebar')
     <div class="content-productos">
         <div class="header">
             <h1><i class="fa-solid fa-cubes"></i>Productos</h1>
         </div>
+        @include('admin.productos.layoutproductos.filtros')
         <div class="container-productos-class">
-            <div class="filtros">
-                <select id="filtro-categoria" class="form-control">
-                    <option value="">Todas las categorías</option>
-                    @foreach ($categorias as $categoria)
-                        <option value="{{ $categoria->id_categoria_producto }}">{{ $categoria->categoria }}</option>
-                    @endforeach
-                </select>
-                <select id="filtro-unidad" class="form-control">
-                    <option value="">Todas las unidades de medida</option>
-                    @foreach ($unidades as $unidad)
-                        <option value="{{ $unidad->id_unidad_peso_producto }}">{{ $unidad->unidad_peso }}</option>
-                    @endforeach
-                </select>
-                <select id="entries" class="form-control">
-                    <option value="10" {{request('PorPagina' == 10 ? 'selected' : '')}}>10</option>
-                    <option value="15" {{request('PorPagina' == 15 ? 'selected' : '')}}>15</option>
-                    <option value="20" {{request('PorPagina' == 20 ? 'selected' : '')}}>20</option>
-                </select>
-                <script>
-
-                </script>
-                <input type="text" id="search" class="form-control" placeholder="Buscar producto...">
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Categoria</th>
-                        <th>Unidad Medida</th>
-                        <th>
-                            <button type="submit" class="btn" id='crear-modal'>
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($productos as $producto)
-                        <tr>
-                            <td>{{ $producto->id_producto }}</td>
-                            <td>{{ $producto->nombre_producto }}</td>
-                            <td>{{ $producto->precio_producto }}</td>
-                            <td>{{ $producto->categoria->categoria }}</td>
-                            <td>{{ $producto->unidad->unidad_peso }}</td>
-                            <td id="botones">
-                                <button type="submit" class="btn-ver" data-id_producto="{{ $producto->id_producto }}">
-                                    <i class="fa-solid fa-eye"></i>
-                                </button>
-                                <button type="submit" class="btn-editar"
-                                    data-id_producto="{{ $producto->id_producto }}">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button type="button" class="borrar-boton btn btn-danger"
-                                    data-id_producto="{{ $producto->id_producto }}">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                                <form id="formEliminar{{ $producto->id_producto }}" method="POST"
-                                    action="{{ route('admin.productos.destroy', $producto->id_producto) }}"
-                                    style="display: none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            @include('admin.productos.layoutproductos.tablaproductos')
         </div>
     </div>
     @include('admin.productos.modal.edit')
@@ -155,6 +55,7 @@
     @include('admin.productos.modal.show')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+    <script src="{{ asset('js/dashboard/productos/buscarProducto.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/editarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/crearboton.js') }}"></script>
