@@ -46,9 +46,8 @@
             <h1><i class="fa-solid fa-cubes"></i>Productos</h1>
         </div>
         @include('admin.productos.layoutproductos.filtros')
-        <div class="container-productos-class">
+
             @include('admin.productos.layoutproductos.tablaproductos')
-        </div>
     </div>
     @include('admin.productos.modal.edit')
     @include('admin.productos.modal.create')
@@ -60,5 +59,6 @@
     <script src="{{ asset('js/dashboard/productos/editarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/crearboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/showboton.js') }}"></script>
+    <script src="{{ asset('js/dashboard/entries.js') }}"></script>
 </body>
 </head>

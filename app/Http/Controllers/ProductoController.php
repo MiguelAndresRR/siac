@@ -12,11 +12,25 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request){
-        $productos = Producto::paginate();
+    public function index(Request $request)
+    {
+        $productos = Producto::query();
+        if ($request->filled('categoria')) {
+            $productos->where('id_categoria_producto', $request->id_categoria_producto);
+        }
+
+        if ($request->filled('unidad')) {
+            $productos->where('id_unidad_peso_producto', $request->id_unidad_peso_producto);
+        }
+
+        if ($request->filled('buscar')) {
+            $productos->where('nombre_producto', 'like', '%' . $request->buscar . '%');
+        }
+        $porPagina = $request->input('PorPagina', 10); // 10 por defecto
+        $productos = $productos->paginate($porPagina);
         $categorias = Categoria::all();
         $unidades = Unidad::all();
-        return view('admin.productos.index', compact('productos', 'categorias', 'unidades'));
+        return view('admin.productos.index', compact('productos', 'categorias', 'unidades', 'porPagina'));
     }
     public function create()
     {
@@ -63,9 +77,7 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function edit(Producto $producto) {
-        
-    }
+    public function edit(Producto $producto) {}
 
     public function update(Request $request, Producto $producto)
     {

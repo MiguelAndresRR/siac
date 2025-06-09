@@ -105,11 +105,11 @@ tbody {
 }
 /* encabezado tabla */
 thead {
-    background-color: #000000;
     color: #ffffff;
     margin: 0;
     & th {
         text-align: center;
+        background-color: #000000;
         font-weight: bold;
         font-size: 16px;
         align-content: center;
@@ -128,7 +128,7 @@ thead {
             &:hover {
                 background-color: #00ff4c;
                 color: #ffffff;
-                transform: scale(1.05);
+                transform: scale(1.03);
                 border: #0c9330 2px solid;
             }
         }
@@ -136,13 +136,14 @@ thead {
 }
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    overflow: scroll;
+    border-spacing: 0;
 }
-.container-productos-class          { overflow: auto; height: 100px; }
-.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
-
-/* Just common table stuff. Really. */
-table  { border-collapse: collapse; width: 100%; }
-th, td { padding: 8px 16px; }
+.container-productos-class {
+    height: 75%;
+    overflow-y: auto;
+}
+.tableFixHead thead tr th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
