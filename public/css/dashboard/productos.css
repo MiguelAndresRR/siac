@@ -8,7 +8,7 @@
 
 .registrar-producto-container{
     border-radius: 10px;
-    height: 90%;
+    height: auto;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px 0 rgba(3, 177, 252, 0.759);
@@ -42,7 +42,7 @@
         &:focus{
             border: 2px solid #9e12e4;
             box-shadow: 0 0 5px #9e12e4;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.1s ease-in-out;
         }
     }
     }

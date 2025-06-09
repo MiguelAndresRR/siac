@@ -128,7 +128,6 @@ thead {
             &:hover {
                 background-color: #00ff4c;
                 color: #ffffff;
-                transform: scale(1.03);
                 border: #0c9330 2px solid;
             }
         }
