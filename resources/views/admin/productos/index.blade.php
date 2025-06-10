@@ -55,12 +55,21 @@
     @include('admin.productos.modal.edit')
     @include('admin.productos.modal.create')
     @include('admin.productos.modal.show')
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+=======
     <script src="{{ asset('js/dashboard/productos/buscarProducto.js') }}"></script>
+>>>>>>> c98f4119e726eb5d170d8fcea3820c0d637f186a
     <script src="{{ asset('js/dashboard/productos/eliminarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/editarboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/crearboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/productos/showboton.js') }}"></script>
     <script src="{{ asset('js/dashboard/entries.js') }}"></script>
+<<<<<<< HEAD
+    <script src="{{ asset('js/dashboard/productos/filtrar.js')}}"></script>
+=======
 
+>>>>>>> c98f4119e726eb5d170d8fcea3820c0d637f186a
 </body>
 </head>

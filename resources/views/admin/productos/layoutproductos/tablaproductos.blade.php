@@ -21,8 +21,11 @@
                     <td>{{ $producto->id_producto }}</td>
                     <td>{{ $producto->nombre_producto }}</td>
                     <td>{{ $producto->precio_producto }}</td>
-                    <td>{{ $producto->categoria->categoria }}</td>
-                    <td>{{ $producto->unidad->unidad_peso }}</td>
+                    <td data-id-categoria="{{ $producto->id_categoria_producto }}">{{ $producto->categoria->categoria }}
+                    </td>
+                    <td data-id-unidad="{{ $producto->id_unidad_peso_producto }}">{{ $producto->unidad->unidad_peso }}
+                    </td>
+
                     <td id="botones">
                         <button type="submit" class="btn-ver" data-id_producto="{{ $producto->id_producto }}">
                             <i class="fa-solid fa-eye"></i>
