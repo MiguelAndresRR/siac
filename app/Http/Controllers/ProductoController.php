@@ -39,8 +39,8 @@ class ProductoController extends Controller
     public function store(Request $request, Producto $producto)
     {
         $request->validate([
-            'nombre_producto' => 'required|string|max:255',
-            'precio_producto' => 'required|numeric|min:0',
+            'nombre_producto' => 'required|string|max:20',
+            'precio_producto' => 'required|numeric|min:0|max:999999.99',
             'id_categoria_producto' => 'required|exists:categoria_producto,id_categoria_producto',
             'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
         ]);
@@ -82,12 +82,11 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $request->validate([
-            'nombre_producto' => 'required|string|max:255',
+            'nombre_producto' => 'required|string|max:20',
             'precio_producto' => 'required|numeric|min:0',
             'id_categoria_producto' => 'required|exists:categoria_producto,id_categoria_producto',
             'id_unidad_peso_producto' => 'required|exists:unidad_peso_producto,id_unidad_peso_producto',
         ]);
-
         $existingProduct = Producto::where('id_categoria_producto', $request->id_categoria_producto)
             ->where('id_unidad_peso_producto', $request->id_unidad_peso_producto)
             ->where('nombre_producto', $request->nombre_producto)

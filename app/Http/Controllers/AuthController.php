@@ -13,6 +13,13 @@ class AuthController extends Controller
 
     public function showLogin()
     {
+        if (Auth::check()) {
+            if (Auth::user()->id_rol == 1) {
+                return redirect()->route('admin.dashboard');
+            } elseif (Auth::user()->id_rol == 2) {
+                return redirect()->route('user.dashboard');
+            }
+        }
         return view('login.login');
     }
 
@@ -30,15 +37,12 @@ class AuthController extends Controller
 
         if ($user && Hash::check($data['password'], $user->password)) {
             Auth::login($user);
-
-            return redirect()
-                ->route($user->id_rol == 1 ? 'admin.dashboard' : 'user.dashboard')
-                ->with('success', 'Bienvenido, ' . $user->user);
+            if ($user->id_rol == 1) {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->id_rol == 2) {
+                return redirect()->route('user.dashboard');
+            }
         }
-
-        return back()->withErrors([
-            'login_error' => 'Usuario, contraseña o rol incorrecto.',
-        ]);
     }
 
     public function logout(Request $request)
@@ -46,7 +50,7 @@ class AuthController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-        $request->session()->regenerateToken(); 
+        $request->session()->regenerateToken();
 
         return redirect('/login');
     }

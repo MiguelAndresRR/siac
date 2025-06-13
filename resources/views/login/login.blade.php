@@ -22,7 +22,7 @@
         <div class="image-side">
             <img src="{{ asset('img/logo.png') }}" alt="Logo del sistema">
         </div>
-        <div class="form-side">
+        <div class="form-side" id="formulario">
             <div class="container_login">
                 <header class="headerlogin">
                     <h1>Iniciar sesión</h1>
@@ -46,7 +46,7 @@
                         </select>
                     </div>
 
-                    <div class="container_input mb-3">
+                    <div class="container_input mb-3" id="grupo__usuario">
                         <i class="fa-solid fa-user fa-fade" style="color: #ffffff;"></i>
                         <label>Usuario</label>
                         <input type="text" class="form-control" name="user" value="{{ old('user') }}"
@@ -56,8 +56,8 @@
                     <div class="container_input mb-3">
                         <i class="fa-solid fa-key" style="color: #FFD43B;"></i>
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" name="password" placeholder="example-holamundo"
-                            required>
+                        <input type="password" class="form-control" name="password"
+                            placeholder="Introduce tu contraseña" autocomplete="off" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-2">Ingresar</button>
@@ -65,6 +65,7 @@
             </div>
         </div>
     </div>
+    <script src="{{asset('js/dashboard/formulario.js')}}"></script>
 </body>
 
 </html>

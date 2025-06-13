@@ -30,4 +30,5 @@ document.addEventListener("DOMContentLoaded", function () {
     filtroCategoria.addEventListener("change", filtrar);
     filtroUnidad.addEventListener("change", filtrar);
     buscarProducto.addEventListener("input", filtrar);
+    // Inicializar el filtro al cargar la página
 });
