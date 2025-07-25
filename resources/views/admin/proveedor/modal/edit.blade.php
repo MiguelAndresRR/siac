@@ -1,7 +1,7 @@
-<div class="container-modal-editar">
-    <div class="modificar-producto-container">
-        <h2>Modificar producto</h2>
-        <form id="form_editar" method="POST" enctype="multipart/form-data" action="">
+<div class="container-modal-editar-proveedor">
+    <div class="modificar-proveedor-container">
+        <h2>Modificar proveedor</h2>
+        <form id="form_editar-proveedor" method="POST" enctype="multipart/form-data" action="">
             @csrf
             @method('PUT')
             <label for="nombre_producto"><i class="fa-solid fa-cubes"></i>Producto</label>
@@ -39,8 +39,8 @@
             <button type="submit">Guardar</button>
             <p class="error" id="errorMessage"></p>
         </form>
-        <button type="submit" class="btn" id="ocultar-modal-editar">Salir</button>
+        <button type="submit" class="btn" id="ocultar-modal-editar-proveedor">Salir</button>
     </div>
 </div>
 
-<script src="{{ asset('js/productos/editar.js') }}"></script>
+<script src="{{ asset('js/proveedor/editar.js') }}"></script>

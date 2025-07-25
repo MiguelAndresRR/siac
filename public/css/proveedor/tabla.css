@@ -20,24 +20,28 @@ td:nth-child(1) {
 } /* ID */
 th:nth-child(2),
 td:nth-child(2) {
-    width: 150px;
-} /* Producto */
+    width: 50px;
+} /* Proveedor */
 th:nth-child(3),
 td:nth-child(3) {
     width: 100px;
-} /* Precio */
+} /* Nit */
 th:nth-child(4),
 td:nth-child(4) {
-    width: 120px;
-} /* Categoría */
+    width: 100px;
+} /* Direccion */
 th:nth-child(5),
 td:nth-child(5) {
-    width: 120px;
-} /* Unidad */
+    width: 100px;
+} /* Telefono */
 th:nth-child(6),
 td:nth-child(6) {
+    width: 80px;
+} /* Correo */
+th:nth-child(7),
+td:nth-child(7) {
     width: 100px;
-}
+} /* Botones */
 tbody {
     background-color: #ffffff;
     color: #000000;
@@ -127,7 +131,7 @@ thead {
         -webkit-user-select: none; /* Safari */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* IE10+/Edge */
-        & #crear-modal {
+        & #crear-modal-proveedor {
             background-color: #ffffff;
             width: 100%;
             color: #000000;
@@ -150,7 +154,7 @@ table {
     width: 100%;
     border-spacing: 0;
 }
-.container-productos-class {
+.container-proveedor-class {
     height: 70vh;
     overflow-y: auto;
 }

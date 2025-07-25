@@ -1,0 +1,40 @@
+const btnOcultarModalEdit = document.querySelector("#ocultar-modal-editar-proveedor");
+const contModalEdit = document.querySelector("#container-modal-editar-proveedor");
+
+btnOcultarModalEdit.addEventListener("click", (e) => {
+    e.preventDefault();
+    contModalEdit.classList.remove("mostrar");
+});
+
+document.addEventListener("click", function (e) {
+    const btn = e.target.closest("#btn-editar1");
+    if (!btn) return;
+
+    e.preventDefault();
+    const id_usuario = btn.dataset.id_usuario;
+
+    fetch(`/admin/usuarios/${id_usuario}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('datos recibidos', data)
+            document.getElementById("nombre_usuario-editar").value =
+                data.nombre_usuario;
+            document.getElementById("apellido_usuario-editar").value =
+                data.apellido_usuario;
+            document.getElementById("documento_usuario-editar").value =
+                data.documento_usuario;
+            document.getElementById("telefono_usuario-editar").value =
+                data.telefono_usuario;
+            document.getElementById("correo_usuario-editar").value =
+                data.correo_usuario;
+            document.getElementById("user-editar").value =
+                data.user;
+            document.getElementById("password-editar").value =
+                data.password;
+            document.getElementById("id_rol-editar").value =
+                data.id_rol;
+            document.getElementById("form_editar1").action = `/admin/usuarios/${id_usuario}`;
+            contModalEdit.classList.add("mostrar");
+        })
+        .catch((error) => console.error("Error al cargar datos:", error));
+});

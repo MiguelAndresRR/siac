@@ -47,7 +47,7 @@
     background-color: #f9f9f9;
 }
 
-.container-modal-show button#ocultar-modal1 {
+.container-modal-show button#ocultar-modal-usuarios {
     width: 100%;
     border-radius: 10px;
     background-color: #000000;
@@ -60,7 +60,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.container-modal-show button#ocultar-modal1:hover {
+.container-modal-show button#ocultar-modal-usuarios:hover {
     background-color: #ffffff;
     border-radius: 10px;
     color: #000000; 

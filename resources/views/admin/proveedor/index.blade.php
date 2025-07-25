@@ -12,13 +12,13 @@
     <script src="https://kit.fontawesome.com/171f3dc321.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{{ asset('css/productos/productos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/proveedor/proveedor.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="{{ asset('css/productos/editar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/productos/tabla.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/productos/paginacion.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/proveedor/editar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/proveedor/tabla.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/proveedor/paginacion.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/productos/mostrar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/proveedor/mostrar.css') }}">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -45,15 +45,15 @@
     @include('admin.layout.sidebar')
     <div class="content-productos">
         <div class="header">
-            <h1><i class="fa-solid fa-cubes"></i>Productos</h1>
+            <h1><i class="fa-solid fa-industry"></i>Proveedores</h1>
         </div>
-        @include('admin.productos.layoutproductos.filtros')
-        <div id="tabla-productos">
-            @include('admin.productos.layoutproductos.tablaproductos')
+        @include('admin.proveedor.layoutproveedor.filtros')
+        <div id="tabla-proveedor">
+            @include('admin.proveedor.layoutproveedor.tablaproveedor')
         </div>
     </div>
-    @include('admin.productos.modal.edit')
-    @include('admin.productos.modal.mostrar')
-    @include('admin.productos.modal.create')
+    {{-- @include('admin.proveedor.modal.edit')
+    @include('admin.proveedor.modal.mostrar') --}}
+    @include('admin.proveedor.modal.create')
 </body>
 </html>

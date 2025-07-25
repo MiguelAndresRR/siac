@@ -1,4 +1,13 @@
-.modificar-producto-container {
+.content-usuarios {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100vw;
+    overflow-y: auto;
+}
+
+.registrar-usuario-container {
     border-radius: 10px;
     height: auto;
     width: 100%;
@@ -8,17 +17,16 @@
     padding: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
-    transition: all 0.1s ease-in-out;
 }
 
-.modificar-producto-container h2 {
+.registrar-usuario-container h2 {
     place-items: left;
     justify-items: left;
     padding: 4px;
     margin-bottom: 20px;
 }
 
-.modificar-producto-container form {
+.registrar-usuario-container form {
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -32,13 +40,12 @@
         background-color: #ffffff;
         color: #000000;
         font-size: 16px;
-        width: 100%;
         margin-bottom: 10px;
 
         &:focus {
             border: 2px solid #9e12e4;
             box-shadow: 0 0 5px #9e12e4;
-
+            transition: all 0.1s ease-in-out;
         }
     }
 }
@@ -46,7 +53,7 @@
 & select {
     border: 2px solid transparent;
     outline: none;
-
+    width: 100%;
     padding: 10px;
     border-radius: 10px;
     background-color: #ffffff;
@@ -72,7 +79,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-.modificar-producto-container button {
+.registrar-usuario-container button {
     width: 100%;
     border-radius: 10px;
     border: 2px solid transparent;
@@ -94,7 +101,7 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
-.container-modal-editar {
+.container-modal-crear {
     position: fixed;
     top: 0;
     left: 0;
@@ -108,14 +115,16 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+
 }
 
-.container-modal-editar.mostrar {
+.container-modal-crear.mostrar {
     opacity: 1;
     visibility: visible;
 }
 
-.container-modal-editar .modal {
+
+.container-modal-crear .modal {
     width: 100%;
     display: flex;
     margin: 0 500px;
@@ -130,11 +139,97 @@ form {
     display: flex;
 }
 
-.modificar-producto-container {
+.registrar-usuario-container {
     background-color: white;
     opacity: none;
     width: 50%;
     align-items: none;
     justify-content: none;
     flex-direction: none;
+}
+
+.form-eliminar {
+    margin: 0;
+    padding: 0;
+}
+
+.filtros {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px;
+    justify-content: left;
+    gap: 10px;
+    width: 100%;
+
+}
+
+.form-control {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.form-control {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    width: 500px;
+    transition: all 0.3s ease-in-out;
+
+    &:focus {
+        border: 2px solid #9e12e4;
+        box-shadow: 0 0 5px #9e12e4;
+    }
+}
+
+#limpiar-filtros-usuarios {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
+    justify-content: center;
+    width: 500px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #f48637 !important;
+        border-radius: 10px;
+        color: #000000 !important;
+        transform: scale(1.05);
+        border: 2px solid #e47012;
+    }
+}
+
+.contenedor-doble {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    & select {
+        border: 2px solid transparent;
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+.datosPersonales,
+.datosAcceso {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #dbdbdb;
+    border-radius: 10px;
+    & p {
+        padding: 10px; 
+    }
 }

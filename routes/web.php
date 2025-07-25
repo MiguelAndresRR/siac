@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ProveedorController;
 
 Route::middleware('prevent-back')->group(function () {
     Route::redirect('/', 'login');
@@ -14,12 +16,10 @@ Route::middleware('prevent-back')->group(function () {
             Route::get('/dashboard', function () {
                 return view('admin.dashboard');
             })->name('dashboard');
-
-            Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
+            Route::get('productos', [ProductoController::class, 'index']);
+            Route::get('usuarios', [UsuarioController::class, 'index']);
+            Route::get('proveedor', [ProveedorController::class, 'index']);
         });
-        Route::get('/user/dashboard', function () {
-            return view('user.dashboard');
-        })->name('user.dashboard');
         // Mostrar la lista de productos
         Route::get('admin/productos/index', [ProductoController::class, 'index'])->name('admin.productos.index');
         // Formulario para crear un nuevo producto
@@ -36,5 +36,36 @@ Route::middleware('prevent-back')->group(function () {
         Route::delete('admin/productos/{producto}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
         // Logout
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        //usuarios
+        Route::get('admin/usuarios/index', [UsuarioController::class, 'index'])->name('admin.usuarios.index');
+        // Crear usuario
+        Route::get('admin/usuarios/create', [UsuarioController::class, 'create'])->name('admin.usuarios.create');
+        // Guardar nuevo producto (form create)
+        Route::post('admin/usuarios/index', [UsuarioController::class, 'store'])->name('admin.usuarios.store');
+        // Mostrar el formulario de edición
+        Route::get('admin/usuarios/index/{usuario}', [UsuarioController::class, 'edit'])->name('admin.usuarios.edit');
+        // Actualizar usuario (form edit)
+        Route::get('admin/usuarios/{usuario}', [UsuarioController::class, 'show'])->name('admin.usuarios.show');
+        //Actualizar usuario
+        Route::put('admin/usuarios/{usuario}', [UsuarioController::class, 'update'])->name('admin.usuarios.update');
+        // Eliminar usuario
+        Route::delete('admin/usuarios/{usuario}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');
+        
+        //proveedor
+        Route::get('admin/proveedor/index', [ProveedorController::class, 'index'])->name('admin.proveedor.index');
+        // Crear proveedor
+        Route::get('admin/proveedor/create', [ProveedorController::class, 'create'])->name('admin.proveedor.create');
+        // Guardar nuevo proveedor (form create)
+        Route::post('admin/proveedor/index', [ProveedorController::class, 'store'])->name('admin.proveedor.store');
+        // Mostrar el formulario de edición
+        Route::get('admin/proveedor/index/{proveedor}', [ProveedorController::class, 'edit'])->name('admin.proveedor.edit');
+        // Mostrar el formulario de edición
+        Route::get('admin/proveedor/index/{proveedor}', [ProveedorController::class, 'show'])->name('admin.proveedor.show');
+        // Actualizar proveedor (form edit)
+        Route::put('admin/proveedor/{proveedor}', [ProveedorController::class, 'update'])->name('admin.proveedor.update');
+        // Eliminar proveedor
+        Route::delete('admin/proveedor/{proveedor}', [ProveedorController::class, 'destroy'])->name('admin.proveedor.destroy');
+
     });
 });
