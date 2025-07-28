@@ -99,12 +99,11 @@ class ProveedorController extends Controller
             ->first();
 
         if ($existingProveedor) {
-            return redirect()->route('admin.usuarios.index')->with('message', [
+            return redirect()->route('admin.proveedor.index')->with('message', [
                 'type' => 'error',
                 'text' => 'El proveedor ya existe en la base de datos.'
             ]);
         } else {
-            $proveedor = Proveedor::find($request->id_proveedor);
             $proveedor->nombre_proveedor = $request->nombre_proveedor;
             $proveedor->nit_proveedor = $request->nit_proveedor;
             $proveedor->direccion_proveedor = $request->direccion_proveedor;

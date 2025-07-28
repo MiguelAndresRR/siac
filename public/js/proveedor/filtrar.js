@@ -34,14 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("change", filtro);
 
     document
-        .getElementById("nombre_proveedor-buscar")
+        .getElementById("buscar_proveedor_nombre")
         .addEventListener("input", () => {
             clearTimeout(window.searchTimer);
             window.searchTimer = setTimeout(filtro, 50);
         });
 
     document
-        .getElementById("nit_proveedor-buscar")
+        .getElementById("buscar_proveedor_nit")
         .addEventListener("input", () => {
             clearTimeout(window.searchTimer);
             window.searchTimer = setTimeout(filtro, 50);
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then((res) => res.text())
                 .then((html) => {
-                    document.getElementById("tabla-usuarios").innerHTML = html;
+                    document.getElementById("tabla-proveedor").innerHTML = html;
 
                     if (typeof window.asignarEventosBotones === "function") {
                         console.log(

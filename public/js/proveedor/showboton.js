@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function asignarEventosBotones() {
-        document.querySelectorAll(".usuarios-btn-ver").forEach((btn) => {
+        document.querySelectorAll(".btn-ver").forEach((btn) => {
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 const id_proveedor = this.dataset.id_proveedor;

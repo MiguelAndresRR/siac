@@ -10,7 +10,7 @@
         </select>
         <input type="text" id="buscar_proveedor_nombre" name="buscar_proveedor_nombre" class="form-control" placeholder="Buscar proveedor...">
         <input type="text" id="buscar_proveedor_nit" name="buscar_proveedor_nit" class="form-control" placeholder="Buscar nit...">
-        <button type="button" id="limpiar-filtros" class="form-control"><i class="fa-solid fa-eraser" style="color: #ffffff;"></i></button>
+        <button type="button" id="limpiar-filtros-proveedor" class="form-control"><i class="fa-solid fa-eraser" style="color: #ffffff;"></i></button>
     </div>
 </form>
 <script src="{{ asset('js/proveedor/filtrar.js')}}"></script>

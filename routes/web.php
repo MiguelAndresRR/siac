@@ -58,10 +58,10 @@ Route::middleware('prevent-back')->group(function () {
         Route::get('admin/proveedor/create', [ProveedorController::class, 'create'])->name('admin.proveedor.create');
         // Guardar nuevo proveedor (form create)
         Route::post('admin/proveedor/index', [ProveedorController::class, 'store'])->name('admin.proveedor.store');
+        // Mostrar proveedor
+        Route::get('admin/proveedor/{proveedor}', [ProveedorController::class, 'show'])->name('admin.proveedor.show');
         // Mostrar el formulario de edición
-        Route::get('admin/proveedor/index/{proveedor}', [ProveedorController::class, 'edit'])->name('admin.proveedor.edit');
-        // Mostrar el formulario de edición
-        Route::get('admin/proveedor/index/{proveedor}', [ProveedorController::class, 'show'])->name('admin.proveedor.show');
+        Route::get('admin/proveedor/{proveedor}/edit', [ProveedorController::class, 'edit'])->name('admin.proveedor.edit');
         // Actualizar proveedor (form edit)
         Route::put('admin/proveedor/{proveedor}', [ProveedorController::class, 'update'])->name('admin.proveedor.update');
         // Eliminar proveedor

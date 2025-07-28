@@ -4,38 +4,21 @@
         <form id="form_editar-proveedor" method="POST" enctype="multipart/form-data" action="">
             @csrf
             @method('PUT')
-            <label for="nombre_producto"><i class="fa-solid fa-cubes"></i>Producto</label>
-            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto"
-                value="{{ old('nombre_producto') }}" placeholder="Nombre del producto" required><br>
-            <label for="precio_producto"><i class="fa-sharp fa-solid fa-coins" style="color: #FFD43B;"></i>Precio del
-                producto</label>
-            <input type="number" class="form-control" id="precio_producto" name="precio_producto"
-                value="{{ old('precio_producto') }}" placeholder="Precio del producto" required><br>
-            <label for="id_categoria_producto"><i class="fa-sharp fa-solid fa-layer-group"
-                    style="color: #ff0000;"></i>Categoría</label>
-            <select name="id_categoria_producto" id="id_categoria_producto" class="form-control" required>
-                <option value="" disabled {{ old('id_categoria_producto') ? '' : 'selected' }}>
-                    Selecciona categoría
-                </option>
-                @foreach ($categorias as $categoria)
-                    <option value="{{ $categoria->id_categoria_producto }}"
-                        {{ old('id_categoria_producto') == $categoria->id_categoria_producto ? 'selected' : '' }}>
-                        {{ $categoria->categoria }}
-                    </option>
-                @endforeach
-            </select><br>
-            <label for="id_unidad_peso_producto"><i class="fa-solid fa-scale-balanced"
-                    style="color: #04fb56;"></i>Unidad de medida</label>
-            <select name="id_unidad_peso_producto" id="id_unidad_peso_producto" class="form-control" required>
-                <option value="" disabled {{ old('id_unidad_peso_producto') ? '' : 'selected' }}>
-                    Selecciona unidad de medida</option>
-                @foreach ($unidades as $unidad)
-                    <option value="{{ $unidad->id_unidad_peso_producto }}"
-                        {{ old('id_unidad_peso_producto') == $unidad->id_unidad_peso_producto ? 'selected' : '' }}>
-                        {{ $unidad->unidad_peso }}
-                    </option>
-                @endforeach
-            </select><br>
+            <label for="nombre_proveedor"><i class="fa-solid fa-building"></i>Nombre del proveedor</label>
+            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor"
+                value="{{ old('nombre_proveedor') }}" placeholder="Nombre del proveedor" required><br>
+            <label for="nit_proveedor"><i class="fa-solid fa-id-card"></i>Nit del proveedor</label>
+            <input type="text" class="form-control" id="nit_proveedor" name="nit_proveedor"
+                value="{{ old('nit_proveedor') }}" placeholder="Nit del proveedor" required><br>
+            <label for="direccion_proveedor"><i class="fa-solid fa-map-marker-alt"></i>Direccion del proveedor</label>
+            <input type="text" class="form-control" id="direccion_proveedor" name="direccion_proveedor"
+                value="{{ old('direccion_proveedor') }}" placeholder="Direccion del proveedor" required><br>
+            <label for="telefono_proveedor"><i class="fa-solid fa-phone"></i>Telefono del proveedor</label>
+            <input type="text" class="form-control" id="telefono_proveedor" name="telefono_proveedor"
+                value="{{ old('telefono_proveedor') }}" placeholder="Telefono del proveedor" required><br>
+            <label for="correo_proveedor"><i class="fa-solid fa-envelope"></i>Correo del proveedor</label>
+            <input type="text" class="form-control" id="correo_proveedor" name="correo_proveedor"
+                value="{{ old('correo_proveedor') }}" placeholder="Correo del proveedor" required><br>
             <button type="submit">Guardar</button>
             <p class="error" id="errorMessage"></p>
         </form>

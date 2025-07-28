@@ -1,5 +1,5 @@
 const btnOcultarModalEdit = document.querySelector("#ocultar-modal-editar-proveedor");
-const contModalEdit = document.querySelector("#container-modal-editar-proveedor");
+const contModalEdit = document.querySelector(".container-modal-editar-proveedor");
 
 btnOcultarModalEdit.addEventListener("click", (e) => {
     e.preventDefault();
@@ -7,33 +7,29 @@ btnOcultarModalEdit.addEventListener("click", (e) => {
 });
 
 document.addEventListener("click", function (e) {
-    const btn = e.target.closest("#btn-editar1");
+    const btn = e.target.closest(".btn-editar");
     if (!btn) return;
 
     e.preventDefault();
-    const id_usuario = btn.dataset.id_usuario;
+    const id_proveedor = btn.dataset.id_proveedor;
+    console.log("Botón editar clickeado, ID:", id_proveedor);
 
-    fetch(`/admin/usuarios/${id_usuario}`)
+    fetch(`/admin/proveedor/${id_proveedor}`)
         .then((response) => response.json())
         .then((data) => {
             console.log('datos recibidos', data)
-            document.getElementById("nombre_usuario-editar").value =
-                data.nombre_usuario;
-            document.getElementById("apellido_usuario-editar").value =
-                data.apellido_usuario;
-            document.getElementById("documento_usuario-editar").value =
-                data.documento_usuario;
-            document.getElementById("telefono_usuario-editar").value =
-                data.telefono_usuario;
-            document.getElementById("correo_usuario-editar").value =
-                data.correo_usuario;
-            document.getElementById("user-editar").value =
-                data.user;
-            document.getElementById("password-editar").value =
-                data.password;
-            document.getElementById("id_rol-editar").value =
-                data.id_rol;
-            document.getElementById("form_editar1").action = `/admin/usuarios/${id_usuario}`;
+            document.getElementById("nombre_proveedor").value =
+                data.nombre_proveedor;
+            document.getElementById("nit_proveedor").value =
+                data.nit_proveedor;
+            document.getElementById("direccion_proveedor").value =
+                data.direccion_proveedor;
+            document.getElementById("telefono_proveedor").value =
+                data.telefono_proveedor;
+            document.getElementById("correo_proveedor").value =
+                data.correo_proveedor;
+            document.getElementById("form_editar-proveedor").action = `/admin/proveedor/${id_proveedor}`;
+            console.log("Modal mostrado");
             contModalEdit.classList.add("mostrar");
         })
         .catch((error) => console.error("Error al cargar datos:", error));
