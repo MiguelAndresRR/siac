@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ComprasController;
 
 Route::middleware('prevent-back')->group(function () {
     Route::redirect('/', 'login');
@@ -67,5 +68,19 @@ Route::middleware('prevent-back')->group(function () {
         // Eliminar proveedor
         Route::delete('admin/proveedor/{proveedor}', [ProveedorController::class, 'destroy'])->name('admin.proveedor.destroy');
 
+        //compras
+        Route::get('admin/compras/index', [ComprasController::class, 'index'])->name('admin.compras.index');
+        // Crear compra
+        Route::get('admin/compras/create', [ComprasController::class, 'create'])->name('admin.compras.create');
+        // Guardar nueva compra (form create)
+        Route::post('admin/compras/index', [ComprasController::class, 'store'])->name('admin.compras.store');
+        // Mostrar compra
+        Route::get('admin/compras/{compra}', [ComprasController::class, 'show'])->name('admin.compras.show');
+        // Mostrar el formulario de edición
+        Route::get('admin/compras/{compra}/edit', [ComprasController::class, 'edit'])->name('admin.compras.edit');
+        // Actualizar compra (form edit)
+        Route::put('admin/compras/{compra}', [ComprasController::class, 'update'])->name('admin.compras.update');
+        // Eliminar compra
+        Route::delete('admin/compras/{compra}', [ComprasController::class, 'destroy'])->name('admin.compras.destroy');
     });
 });
