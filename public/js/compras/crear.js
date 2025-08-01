@@ -1,7 +1,7 @@
 function asignarEventosModalCrear() {
-    const btnAbrirModal = document.querySelector("#crear-modal-proveedor");
-    const btnCerrarModal = document.querySelector("#ocultar-modal-crear-proveedor");
-    const contModal = document.querySelector(".container-modal-crear-proveedor");
+    const btnAbrirModal = document.querySelector("#crear-modal-compras");
+    const btnCerrarModal = document.querySelector("#ocultar-modal-crear-compras");
+    const contModal = document.querySelector(".container-modal-crear-compras");
 
     if (btnAbrirModal) {
         btnAbrirModal.addEventListener("click", (e) => {
@@ -18,6 +18,8 @@ function asignarEventosModalCrear() {
             console.log("✅ Modal cerrado");
         });
     }
+
+    
 }
 
 // Al cargar la página
